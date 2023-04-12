@@ -40,5 +40,5 @@
         document.getElementById(`loc_item_${i}`).value = userLocation;
         document.getElementById(`desc_item_${i}`).value = desc_item;
         document.getElementById(`amt_paid_${i}`).value = amt_paid;
-        }
+    }
 })();
