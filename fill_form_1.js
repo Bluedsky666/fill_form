@@ -1,39 +1,25 @@
-(async function() {
+(function() {
     'use strict';
 
+    // 弹出输入框，让用户输入购买地点
     let userLocation = prompt("请输入购买地点：");
-    if (!userLocation) {
-        alert("请填写购买地点");
-        return;
+    
+    // 检查用户是否填写了购买地点
+    while (!userLocation) {
+        userLocation = prompt("购买地点不能为空，请重新输入：");
     }
 
-    const targetUrl = 'https://southoffrancesettlement.com/submit-claim';
-    if (window.location.href !== targetUrl) {
-        window.location.href = targetUrl;
-        return;
-    }
+    // 打开网页
+    window.location.href = 'https://southoffrancesettlement.com/submit-claim';
 
-    function waitForElement(selector) {
-        return new Promise(resolve => {
-            const observer = new MutationObserver(mutations => {
-                if (document.querySelector(selector)) {
-                    resolve();
-                    observer.disconnect();
-                }
-            });
-
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
-        });
-    }
-
-    await waitForElement('#skip-guard');
-
-    document.querySelector('#skip-guard').click();
-
-    await waitForElement('#date_item_1');
+    // 等待id为skip-guard的按钮出现后点击
+    let intervalId = setInterval(function() {
+        let skipButton = document.getElementById("skip-guard");
+        if (skipButton) {
+            skipButton.click();
+            clearInterval(intervalId);
+        }
+    }, 1000);
 
     // 设置初始日期为2020年2月1日之后的某一天
     let currentDate = new Date(2020, 1, Math.floor(Math.random() * 27) + 2);
