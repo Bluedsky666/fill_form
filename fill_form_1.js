@@ -1,36 +1,39 @@
 (async function() {
     'use strict';
 
-    // 弹出输入框，让用户输入购买地点
-    let userLocation = '';
-    while (!userLocation) {
-        userLocation = prompt("请输入购买地点：");
-        if (!userLocation) {
-            alert("请填写购买地点");
-        }
+    let userLocation = prompt("请输入购买地点：");
+    if (!userLocation) {
+        alert("请填写购买地点");
+        return;
     }
 
-    // 打开指定网址
-    window.open("https://southoffrancesettlement.com/submit-claim", "_blank");
+    const targetUrl = 'https://southoffrancesettlement.com/submit-claim';
+    if (window.location.href !== targetUrl) {
+        window.location.href = targetUrl;
+        return;
+    }
 
-    // 等待页面加载完成
-    const waitForElement = async (selector, time = 30000) => {
-        const waitFor = (ms) => new Promise((r) => setTimeout(r, ms));
-        let element;
+    function waitForElement(selector) {
+        return new Promise(resolve => {
+            const observer = new MutationObserver(mutations => {
+                if (document.querySelector(selector)) {
+                    resolve();
+                    observer.disconnect();
+                }
+            });
 
-        while (!(element = document.querySelector(selector)) && time > 0) {
-            await waitFor(100);
-            time -= 100;
-        }
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    }
 
-        return element;
-    };
+    await waitForElement('#skip-guard');
 
-    await waitForElement("#skip-guard");
+    document.querySelector('#skip-guard').click();
 
-    document.getElementById("skip-guard").click();
-
-    await waitForElement("#date_item_1");
+    await waitForElement('#date_item_1');
 
     // 设置初始日期为2020年2月1日之后的某一天
     let currentDate = new Date(2020, 1, Math.floor(Math.random() * 27) + 2);
