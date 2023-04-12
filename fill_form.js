@@ -18,7 +18,7 @@
 
         // 在原始值的基础上在正负2的范围内偏移amt_paid
         let offset = (Math.random() * 4) - 2;
-        amt_paid = parseFloat((amt_paid + offset).toFixed(2));
+        amt_paid = Math.round(amt_paid + offset);
 
         // 递增2到4个月，号数随机
         let monthIncrement = Math.floor(Math.random() * 3) + 2;
