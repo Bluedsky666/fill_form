@@ -10,7 +10,11 @@
     // 循环填写表单的每一行
     for (let i = 1; i <= 10; i++) {
         // 随机选择要填写的值
-        let retail = Math.floor(Math.random() * 2) ? "amazon.com" : "walmart.com";
+        let retail = Math.floor(Math.random() * 4);
+        if (retail === 0) retail = "amazon.com";
+        else if (retail === 1) retail = "walmart.com";
+        else if (retail === 2) retail = "vitacost.com";
+        else retail = "walmart";
         let desc_item_list = ["Blooming Jasmine", "Almond Gourmande", "Climbing Wild Rose", "Côte d'Azur", "Green Tea", "Lavender Fields", "Lemon Verbena", "Lush Gardenia", "Mediterranean Fig", "Orange Blossom Honey", "Shea Butter", "Cherry Blossom", "Glazed Apricots", "Violet Bouquet"];
         let amt_paid_list = [7.88, 13, 13, 25.6, 11.8, 8, 10, 10, 8, 8, 9, 11.5, 8.5];
         let desc_item = desc_item_list[Math.floor(Math.random() * desc_item_list.length)];
