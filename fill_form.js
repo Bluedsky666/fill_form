@@ -4,8 +4,8 @@
     // 弹出输入框，让用户输入购买地点
     let userLocation = prompt("请输入购买地点：");
 
-    // 设置初始日期为2020年2月1日之后的某一天
-    let currentDate = new Date(2020, 1, Math.floor(Math.random() * 27) + 2);
+    // 设置初始日期为2016年之后的某一天
+    let currentDate = new Date(2016, Math.floor(Math.random() * 11), Math.floor(Math.random() * 27) + 2);
 
     // 循环填写表单的每一行
     for (let i = 1; i <= 10; i++) {
@@ -27,9 +27,9 @@
         currentDate.setMonth(currentDate.getMonth() + monthIncrement);
         currentDate.setDate(dayIncrement);
 
-        // 保证日期不超过02/10/2023
-        if (currentDate > new Date(2023, 1, 10)) {
-            currentDate = new Date(2023, 1, 10);
+        // 保证日期不超过05/12/2022
+        if (currentDate > new Date(2022, 4, 12)) {
+            currentDate = new Date(2022, 4, 12);
         }
 
         // 格式化日期为mm/dd/yyyy
