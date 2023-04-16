@@ -13,7 +13,7 @@
         let retailOptions = ["amazon.com", "walmart.com", "vitacost.com", "walmart"];
         let retail = retailOptions[Math.floor(Math.random() * retailOptions.length)];
         let desc_item_list = ["Blooming Jasmine", "Almond Gourmande", "Climbing Wild Rose", "Côte d'Azur", "Green Tea", "Lavender Fields", "Lemon Verbena", "Lush Gardenia", "Mediterranean Fig", "Orange Blossom Honey", "Shea Butter", "Cherry Blossom", "Glazed Apricots", "Violet Bouquet"];
-        let amt_paid_list = [7.88, 13, 13, 25.6, 11.8, 8, 10, 10, 8, 8, 9, 11.5, 8.5];
+        let amt_paid_list = [7.88, 13, 13, 25.6, 11.8, 8, 10, 10, 8, 8, 8, 9, 11.5, 8.5];
         let desc_item = desc_item_list[Math.floor(Math.random() * desc_item_list.length)];
         let amt_paid = amt_paid_list[Math.floor(Math.random() * amt_paid_list.length)];
 
