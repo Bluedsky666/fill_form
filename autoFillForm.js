@@ -94,3 +94,4 @@ function getRandomQuantity() {
         single_can_quantity
     };
 }
+window.onload = autoFillForm;
