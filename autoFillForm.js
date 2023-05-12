@@ -1,6 +1,6 @@
 // autoFillForm.js
 function autoFillForm() {
-    const inputText = prompt("请输入您的个人信息，使用 | 作为分隔符。\n格式：姓|名|地址|城市|州|邮编|ssn|dob|email");
+    const inputText = prompt("请输入您的个人信息，使用 | 作为分隔符。\n格式：姓|名|地址|城市|州|邮编 \n|ssn|dob|email");
 
     const parts = inputText.split('|');
 
