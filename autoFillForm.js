@@ -11,8 +11,6 @@ function autoFillForm() {
     let state = parts[4];
     let zip_code = parts[5];
 
-    const signature = `${first_name} ${last_name}`;
-
     document.getElementById("first_name").value = first_name;
     document.getElementById("last_name").value = last_name;
     document.getElementById("street_address_1").value = address;
@@ -31,18 +29,33 @@ function autoFillForm() {
 
     document.getElementById("zip_code").value = zip_code;
 
-    const yesOption = document.getElementById("yes");
-    const noOption = document.getElementById("no");
+    const yesOption = document.getElementById("purchased_vizzy_yes");
+    yesOption.checked = true;
 
-    if (Math.random() < 0.5) {
-        yesOption.checked = true;
-    } else {
-        noOption.checked = true;
-    }
+    document.getElementById("signature").value = signature;
 
-    let currentDate = new Date(2020, 0, 1);
+    const quantities = getRandomQuantity();
 
-    // 修改后的日期填写部分
+    document.getElementById("twelve_pack_units").value = quantities.twelve_pack_quantity;
+    document.getElementById("twenty_four_pack_units").value = quantities.twenty_four_pack_quantity;
+    document.getElementById("single_can_units").value = quantities.single_can_quantity;
+
+    const userLocation = `${city} ${state}`;
+
+    document.querySelector('#product_5_1 [value="12-pack Unit"]').selected = true;
+    document.querySelector('#product_5_2 [value="24-pack Unit"]').selected = true;
+    document.querySelector('#product_5_3 [value="Single Can Unit"]').selected = true;
+
+    document.getElementById("units_5_1").value = quantities.twelve_pack_quantity;
+    document.getElementById("units_5_2").value = quantities.twenty_four_pack_quantity;
+    document.getElementById("units_5_3").value = quantities.single_can_quantity;
+
+    document.getElementById("purchase_place_5_1").value = userLocation;
+    document.getElementById("purchase_place_5_2").value = userLocation;
+    document.getElementById("purchase_place_5_3").value = userLocation;
+
+    const currentDate = new Date(2020, Math.floor(Math.random() * 12), 1);
+
     for (let i = 1; i <= 3; i++) {
         const monthIncrement = Math.floor(Math.random() * 4) + 2;
         currentDate.setMonth(currentDate.getMonth() + monthIncrement);
@@ -55,16 +68,28 @@ function autoFillForm() {
 
         document.getElementById(`purchase_month_5_${i}`).value = formattedDate;
     }
-
-    // 修改后的购买数量填写部分
-    for (let i = 1; i <= 3; i++) {
-        const units = Math.floor(Math.random() * 10) + 1;
-        document.getElementById(`units_5_${i}`).value = units;
-    }
-
-    document.getElementById("signature").value = signature;
-    document.getElementById("date_signed").value = new Date().toLocaleDateString();
 }
 
-// 在页面加载完成后自动执行 autoFillForm 函数
-window.onload = autoFillForm;
+function getRandomQuantity() {
+    let twelve_pack_quantity;
+    let twenty_four_pack_quantity;
+    let single_can_quantity;
+    let total_price;
+
+    while (true) {
+        twelve_pack_quantity = Math.floor(Math.random() * 11);
+        twenty_four_pack_quantity = Math.floor(Math.random() * 11);
+        single_can_quantity = Math.floor(Math.random() * 11);
+        total_price = 3 * twelve_pack_quantity + 5 * twenty_four_pack_quantity + 0.75 * single_can_quantity;
+
+        if (15 <= total_price && total_price <= 20 && twelve_pack_quantity > 0 && twenty_four_pack_quantity > 0 && single_can_quantity > 0) {
+            break;
+        }
+    }
+
+    return {
+        twelve_pack_quantity,
+        twenty_four_pack_quantity,
+        single_can_quantity
+    };
+}
