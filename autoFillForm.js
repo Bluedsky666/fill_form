@@ -10,7 +10,6 @@ function autoFillForm() {
     let city = parts[3];
     let state = parts[4];
     let zip_code = parts[5];
-    let signature = `${first_name} ${last_name}`;
 
     document.getElementById("first_name").value = first_name;
     document.getElementById("last_name").value = last_name;
@@ -33,6 +32,7 @@ function autoFillForm() {
     const yesOption = document.getElementById("purchased_vizzy_yes");
     yesOption.click();
 
+    let signature = `${first_name} ${last_name}`;
     document.getElementById("signature").value = signature;
 
     const quantities = getRandomQuantity();
@@ -94,4 +94,5 @@ function getRandomQuantity() {
         single_can_quantity
     };
 }
+
 autoFillForm();
