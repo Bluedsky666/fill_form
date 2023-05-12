@@ -30,7 +30,7 @@ function autoFillForm() {
     document.getElementById("zip_code").value = zip_code;
 
     const yesOption = document.getElementById("purchased_vizzy_yes");
-    yesOption.checked = true;
+    yesOption.click();
 
     document.getElementById("signature").value = signature;
 
