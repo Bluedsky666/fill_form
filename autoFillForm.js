@@ -1,4 +1,3 @@
-// autoFillForm.js
 function autoFillForm() {
     const inputText = prompt("请输入您的个人信息，使用 | 作为分隔符。\n格式：姓|名|地址|城市|州|邮编");
 
@@ -39,32 +38,6 @@ function autoFillForm() {
     } else {
         noOption.checked = true;
     }
-
-    let currentDate = new Date(2020, 0, 1);
-
-    // 修改后的日期填写部分
-    for (let i = 1; i <= 3; i++) {
-        const monthIncrement = Math.floor(Math.random() * 4) + 2;
-        currentDate.setMonth(currentDate.getMonth() + monthIncrement);
-
-        if (currentDate > new Date(2022, 11, 31)) {
-            currentDate.setFullYear(2022, 11, 31);
-        }
-
-        const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
-
-        document.getElementById(`purchase_month_5_${i}`).value = formattedDate;
-    }
-
-    // 修改后的购买数量填写部分
-    for (let i = 1; i <= 3; i++) {
-        const units = Math.floor(Math.random() * 10) + 1;
-        document.getElementById(`units_5_${i}`).value = units;
-    }
-
-    document.getElementById("signature").value = signature;
-    document.getElementById("date_signed").value = new Date().toLocaleDateString();
 }
 
-// 在页面加载完成后自动执行 autoFillForm 函数
 window.onload = autoFillForm;
