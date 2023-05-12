@@ -65,7 +65,8 @@ function autoFillForm() {
             currentDate.setFullYear(2022, 11, 31);
         }
 
-        const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+        const formattedMonth = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const formattedDate = `${formattedMonth}/${currentDate.getFullYear()}`;
 
         document.getElementById(`purchase_month_5_${i}`).value = formattedDate;
     }
