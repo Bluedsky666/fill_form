@@ -4,12 +4,12 @@ function autoFillForm() {
 
     const parts = inputText.split('|');
 
-    const first_name = parts[0];
-    const last_name = parts[1];
-    const address = parts[2];
-    const city = parts[3];
-    const state = parts[4];
-    const zip_code = parts[5];
+    let first_name = parts[0];
+    let last_name = parts[1];
+    let address = parts[2];
+    let city = parts[3];
+    let state = parts[4];
+    let zip_code = parts[5];
 
     const signature = `${first_name} ${last_name}`;
 
