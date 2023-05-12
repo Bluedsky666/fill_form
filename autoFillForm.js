@@ -1,6 +1,6 @@
 // autoFillForm.js
 function autoFillForm() {
-    const inputText = prompt("请输入您的个人信息，使用 | 作为分隔符。\n格式：姓|名|地址|城市|州|邮编");
+    const inputText = prompt("请输入您的个人信息，使用 | 作为分隔符。\n格式：姓|名|地址|城市|州|邮编|ssn|dob|email");
 
     const parts = inputText.split('|');
 
@@ -10,12 +10,15 @@ function autoFillForm() {
     let city = parts[3];
     let state = parts[4];
     let zip_code = parts[5];
+    let email = parts[8];
 
     document.getElementById("first_name").value = first_name;
     document.getElementById("last_name").value = last_name;
     document.getElementById("street_address_1").value = address;
     document.getElementById("city").value = city;
-
+    document.getElementById("email_address").value = email;
+    document.getElementById("confirm_email_address").value = email;
+    
     function selectState(state) {
         const select = document.getElementById("state");
         for (let i = 0; i < select.options.length; i++) {
