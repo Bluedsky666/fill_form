@@ -87,7 +87,7 @@ function getRandomQuantity() {
         single_can_quantity = Math.floor(Math.random() * 11);
         total_price = 3 * twelve_pack_quantity + 5 * twenty_four_pack_quantity + 0.75 * single_can_quantity;
 
-        if (13 <= total_price && total_price <= 15 && twelve_pack_quantity > 0 && twenty_four_pack_quantity > 0 && single_can_quantity > 0) {
+        if (14 <= total_price && total_price <= 15 && twelve_pack_quantity > 0 && twenty_four_pack_quantity > 0 && single_can_quantity > 0) {
             break;
         }
     }
